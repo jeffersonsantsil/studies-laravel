@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Edição de Usuário: ')
-
+@yield('title', Cadastro de usuários)
 
 @section('content')
-
     <div class="formCenter col-5 container-fluid">
-        <form action="#" method="post">            
+        <form action="#" method="post">
             <div class="mb-3 form-group">
                 <label for="name" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" name="name" value="{{ $user->name }}">
@@ -23,18 +21,16 @@
                 <label for="confirmPassword" class="form-label">Confirme sua senha</label>
                 <input type="password" class="form-control" name="confirmPassword" disabled>
             </div>
-            
-                <?php
-                if (!$user) {
-                    echo '<button type="submit" class="btn btn-success">Cadastrar';
 
-                } else {
-                    echo '<button type="submit" class="btn btn-primary">Editar';
-                }
-                ?>
+            <?php
+            if (!$user) {
+                echo '<button type="submit" class="btn btn-success">Cadastrar';
+            } else {
+                echo '<button type="submit" class="btn btn-primary">Editar';
+            }
+            ?>
             </button>
         </form>
 
     </div>
-
 @endsection

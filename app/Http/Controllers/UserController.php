@@ -24,4 +24,10 @@ class UserController extends Controller
         }
         return back();        
     }
+
+
+    public function newUser()
+    {
+        dd('Chegou');
+    }
 }
