@@ -4,7 +4,8 @@
 
 @section('content')
     <div class="formCenter col-5 container-fluid">
-        <form action="#" method="post">
+        <form action="{{ route('users.store') }}" method="post">
+            @csrf()
             <div class="mb-3 form-group">
                 <label for="name" class="form-label">Nome Completo</label>
                 <input type="text" class="form-control" name="name" required>
@@ -16,11 +17,7 @@
             <div class="mb-3 form-group">
                 <label for="password" class="form-label">Senha</label>
                 <input type="password" class="form-control" name="password" required>
-            </div>
-            <div class="mb-3 form-group">
-                <label for="confirmPassword" class="form-label">Confirme sua senha</label>
-                <input type="password" class="form-control" name="confirmPassword" required>
-            </div>
+            </div>           
 
             <?php
             if (!isset($user)) {

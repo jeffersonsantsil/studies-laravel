@@ -21,7 +21,8 @@
                     <td>{{ $user->email }}</td>
                     <td colspan="2">
                         <a href="{{ route('users.show', $user->id) }}"><i class="fa-solid fa-user-pen"></i></a> |
-                        <a href=""><i class="fa-solid fa-user-xmark"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalDelete">
+                            <i class="fa-solid fa-user-xmark"></i></a>
                     </td>
                 </tr>
             @endforeach
@@ -29,3 +30,29 @@
     </table>
 
 @endsection
+
+{{-- MODAL DELETE --}}
+<div class="modal" id="modalDelete" tabindex="1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Remover de usuário ID: {{ $user->id }}</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Deseja mesmo remover o usuário {{ $user->name }}?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Warning" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-danger"><a href="{{route('users.delete', $user->id) }}">Deletar</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
