@@ -28,6 +28,7 @@ class UserController extends Controller
 
     public function newUser()
     {
-        dd('Chegou');
+        //dd('Chegou');
+        return view('users.newUser');
     }
 }
