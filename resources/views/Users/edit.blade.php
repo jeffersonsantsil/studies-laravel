@@ -85,6 +85,7 @@
                     <button type="submit" class="btn btn-primary mb-3">Editar</button>
                 </div>
             </form>
+            <a href="{{ route('index') }}"><button class="btn btn-danger mb-3">Cancelar</button></a>
         </div>
     </div>
 
