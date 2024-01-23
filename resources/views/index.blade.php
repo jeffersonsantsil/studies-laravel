@@ -111,11 +111,11 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 <a href="{{ route('user.edit', $user->id) }}" >
-                                    <i class="bi bi-pencil-square"></i> <!--Editar User -->
+                                    <i class="bi bi-pencil-square"></i> <!--Editar User a ideia aqui é que seja aberto um modal -->
                                 </a>
                                 |
                                 <a href="#">
-                                    <i class="bi bi-person-x-fill"></i> <!--Excluir User -->
+                                    <i class="bi bi-person-x-fill"></i> <!--Excluir User a ideia aqui é que seja aberto um modal-->
                                 </a>
                             </td>
                         </tr>
