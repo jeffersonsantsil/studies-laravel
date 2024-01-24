@@ -101,7 +101,7 @@
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>                    
                     @foreach ($users as $user)
                         <tr>
                             <th scope="row">#{{ $user->id }}</th>
@@ -110,22 +110,72 @@
                             <td>{{ $user->userName }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <a href="{{ route('user.edit', $user->id) }}" >
-                                    <i class="bi bi-pencil-square"></i> <!--Editar User a ideia aqui é que seja aberto um modal -->
-                                </a>
-                                |
-                                <a href="#">
-                                    <i class="bi bi-person-x-fill"></i> <!--Excluir User a ideia aqui é que seja aberto um modal-->
-                                </a>
+                                <!-- Button trigger modal -->
+                                <button class="btn btn-warning" data-bs-target="#{{ route('user.edit', $user->id) }}"
+                                    data-bs-toggle="modal">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button class="btn btn-danger">
+                                    <i class="bi bi-person-x-fill"></i>
+                                    <!--Excluir User a ideia aqui é que seja aberto um modal-->
+                                </button>
                             </td>
                         </tr>
                 </tbody>
                 @endforeach
             </table>
         </div>
-
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="{{ route('user.edit', $user->id) }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar <strong>{{ $user->name }}</strong>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label col-auto">Nome</label>
+                        <input type="text" name="name" class="form-control col-auto" id="name"
+                            placeholder="Nome Completo" value="{{ $user->name }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userName" class="form-label col-auto">Usuário</label>
+                        <input type="text" name="userName" class="form-control col-auto" id="userName"
+                            placeholder="username" value="{{ $user->userName }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label col-auto">Email</label>
+                        <input type="email" name="email" class="form-control col-auto" id="email"
+                            placeholder="name@example.com.br" value="{{ $user->email }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label col-auto">Senha</label>
+                        <input type="password" name="password" class="form-control col-auto" id="password"
+                            placeholder="Senha">
+                        <div class="col-auto">
+                            <span id="passwordHelpInline" class="form-text">
+                                No minimo 6 caracteres.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-success">Editar</button>
+                    </div>
+                </div>
+                <form action="{{ route('user.update', $user->id) }}" id="formCad" method="post">
+                    @method('PUT')
+                    @csrf
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
 
 
 
