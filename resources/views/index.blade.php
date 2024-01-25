@@ -111,7 +111,7 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 <!-- Button trigger modal -->
-                                <button class="btn btn-warning" data-bs-target="#{{ route('user.edit', $user->id) }}"
+                                <button class="btn btn-warning" data-bs-target="#editModal"
                                     data-bs-toggle="modal">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
@@ -129,7 +129,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="{{ route('user.edit', $user->id) }}" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
