@@ -10,7 +10,8 @@ class FraldasController extends Controller
 {
     public function index()
     {
-        $produtos = Fralda::paginate(10);
+        $produtos = Fralda::orderBy('created_at', 'desc')->get();        
+        //$produtos = Fralda::paginate(10);
         //dd($produto);        
         return view('fraldas.index', compact('produtos'));
     }
@@ -46,4 +47,5 @@ class FraldasController extends Controller
         Fralda::create($dados);
         return redirect(route('fralda.index'));
     }
+
 }

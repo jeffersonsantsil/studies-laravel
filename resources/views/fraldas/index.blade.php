@@ -56,7 +56,10 @@
                     <button type="submit" class="btn btn-success mb-3">Cadastrar</button>
                 </div>
             </form>
+
         </div>
+
+
 
         <div id="table">
             <table class="table table-striped table-hover">
