@@ -8,21 +8,51 @@ use Illuminate\Http\Request;
 
 class FraldasController extends Controller
 {
-    public function index()
+
+    public function indexLogin()
     {
-        $produtos = Fralda::orderBy('created_at', 'desc')->get();        
-        //$produtos = Fralda::paginate(10);
-        //dd($produto);        
-        return view('fraldas.index', compact('produtos'));
+        return view('fraldas.users.login');
+    }
+
+    public function login(Request $request)
+    {
+        $produtos = Fralda::orderBy('created_at', 'desc')->get();
+
+
+        $dados = $request->all();
+        if ($dados['operador'] == 'Helton') {
+            $arrayOperadorTurno = [
+                'operador' => $dados['operador'],
+                'turno' => $dados['turno']
+            ];
+            return view('fraldas.fraldas-peso', compact('arrayOperadorTurno', 'produtos'));
+        } else {
+            return view('fraldas.users.login');
+        }
     }
 
 
-    public function createFralda(Request $request)
+    public function pesoFraldas()
     {
+        $produtos = Fralda::orderBy('created_at', 'desc')->get();
+        if (!$produtos) {
+            return view('fraldas..fraldas-peso', compact('produtos'));
+        } else {
+            $produtos = null;
+            return view('fraldas..fraldas-peso', compact('produtos'));
+        }
+        //$produtos = Fralda::paginate(10);
+        dd($produtos);
+    }
 
+
+
+    public function cadFralda(Request $request)
+    {
+        
         $dados = $request->all();
 
-        //dd($dados);
+        //dd($request);
 
         if ($dados['peso'] == "") {
             $dados['status'] = 'Sem Registro';
@@ -44,8 +74,12 @@ class FraldasController extends Controller
             $dados['status'] = 'Abaixo do Mínimo';
         }
 
+        //dd($dados);
+        $arrayOperadorTurno = [
+            'operador' => $dados['operador'],
+            'turno' => $dados['turno'],
+        ];
         Fralda::create($dados);
-        return redirect(route('fralda.index'));
+        return redirect(route('fraldas.peso', compact('arrayOperadorTurno')));
     }
-
 }
