@@ -19,7 +19,9 @@
                                     <h3 class="text-center font-weight-light my-4">Operador</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="{{ route('set.session') }}" method="POST">
+                                        @method('PUT')
+                                        @csrf
                                         <div class="form-floating mb-3">
                                             <select class="form-control" name="nameOperador" id="nameOperador">
                                                 <option value="">Operador</option>
@@ -63,8 +65,7 @@
                                             </select>
                                             <label for="tamanhoProduto">Tamanho Produto</label>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0"> <a
-                                                class="btn btn-success" href=" {{ '/' }}">Iniciar Pesagem</a>
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0"> <button class="btn btn-success" type="submit">Iniciar Pesagem</a>
                                         </div>
                                     </form>
                                 </div>
@@ -72,13 +73,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
