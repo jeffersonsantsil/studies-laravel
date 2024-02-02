@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('site.index');
 });
+
+Route::get('/login', function(){
+    return view('site.auth.login');
+});
+
+Route::get('/peso-hora-hora', function(){
+    return view('site.peso.parametros-peso');
+})->name('definicoes.peso');

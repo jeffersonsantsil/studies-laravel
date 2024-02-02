@@ -56,7 +56,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('definicoes.peso') }}">
                             <div class="sb-nav-link-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                             Peso hora hora
                         </a>
